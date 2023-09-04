@@ -6,6 +6,8 @@ import { JwtHelperService } from '@auth0/angular-jwt';
 import { ToastrService } from 'ngx-toastr';
 // import configurl from '../../../assets/config/config.json';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
+// import { AuthGuard } from 'src/app/shared/authguard.guard';
+import { AuthservicesService } from 'src/app/authservices.service';
 
 @Component({
   selector: 'app-login',
@@ -18,7 +20,7 @@ export class LoginComponent implements OnInit {
 
   }
   invalidLogin?: boolean;
-  constructor(private http: HttpClient, private toastr: ToastrService, private jwtHelper: JwtHelperService, private fb: FormBuilder, private services: UserservicesService, private route: Router) { }
+  constructor(private authservices:AuthservicesService,private http: HttpClient, private toastr: ToastrService, private jwtHelper: JwtHelperService, private fb: FormBuilder, private services: UserservicesService, private route: Router) { }
 
   // Form=this.fb.group({
   //   email:['',Validators.required],
@@ -82,32 +84,36 @@ export class LoginComponent implements OnInit {
   //   });
   // }
 
-  url = "http://localhost:5281" + '/api/';
-  OnLogin(input: any) {
-    const credentials = JSON.stringify(this.Form.value);
-    this.http.post(this.url + "Login", credentials, {
-      headers: new HttpHeaders({
-        "Content-Type": "application/json"
-      })
-    }).subscribe(Response => {
-      const token = (<any>Response).token;
-      localStorage.setItem("jwt", token);
-      this.invalidLogin = false;
-      this.toastr.success("Login In SUccessfully");
-      this.route.navigate(["/facultypublishlist"])
-    
 
-    });
+  OnLogin(input:any)
+  {
+    
+    this.services.Login(input).subscribe(res=>{
+      const token = (<any>res).token;
+      localStorage.setItem("token", token);
+      this.invalidLogin = false;
+      this.toastr.success("Login In Sccessfully");
+      this.authservices.setAuthenticated(true);
+      this.route.navigate(["/facultypublishlist"])
+
+    })
+
   }
-  isUserAuthenticated() {
-    const token = localStorage.getItem("jwt");
-    if (token && !this.jwtHelper.isTokenExpired(token)) {
-      return true;
-    }
-    else {
-      return false;
-    }
+  public logOut = () => {
+    localStorage.removeItem("jwt");
   }
+
+
+  
+  // isUserAuthenticated() {
+  //   const token = localStorage.getItem("jwt");
+  //   if (token && !this.jwtHelper.isTokenExpired(token)) {
+  //     return true;
+  //   }
+  //   else {
+  //     return false;
+  //   }
+  // }
 
 
 

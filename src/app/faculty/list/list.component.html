@@ -29,27 +29,28 @@
   <main>
 
 
-    <div  id="wrapper">
-      
-          <app-sidebar></app-sidebar>
+    <div id="wrapper">
 
-       
+      <app-sidebar></app-sidebar>
 
-          
-        <div *ngIf="isUserAuthenticated()" id="content-wrapper" class="d-flex flex-column" >
-          <app-header></app-header>
-          <div class="container" *ngFor="let m of newdata">
-            <div class="card">
-              <td>{{m.publicationdetail}}</td>
-              <td>{{m.publishername}}</td>
-              <td>{{m.dateofpublish}}</td>
-              <td>{{m.publisherType}}</td>
 
-            </div>
-            <br>
+
+
+      <div id="content-wrapper" class="d-flex flex-column">
+        <app-header></app-header>
+        <div class="container" *ngFor="let m of newdata">
+          <div class="card">
+            <td>{{m.publicationdetail}}</td>
+            <td>{{m.publishername}}</td>
+            <td>{{m.dateofpublish}}</td>
+            <td>{{m.publisherType}}</td>
 
           </div>
-          <!-- <table class="table table-primary">
+          <br>
+
+        </div>
+
+        <!-- <table class="table table-primary">
             <thead>
               <tr>
                 <th scope="col">publicationdetail</th>
@@ -69,12 +70,55 @@
 
             </tbody>
           </table> -->
-        </div>
       </div>
- 
+    </div>
+
     <div>
     </div>
+    <button routerLink="" routerLinkActive="active" (click)="logOut()">logout</button>
   </main>
+  
+    <!-- Scroll to Top Button-->
+    <a class="scroll-to-top rounded" href="#page-top">
+      <i class="fas fa-angle-up"></i>
+  </a>
+
+  <!-- Logout Modal-->
+  <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+      aria-hidden="true">
+      <div class="modal-dialog" role="document">
+          <div class="modal-content">
+              <div class="modal-header">
+                  <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
+                  <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                      <span aria-hidden="true">×</span>
+                  </button>
+              </div>
+              <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
+              <div class="modal-footer">
+                  <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+                  <a class="btn btn-primary" href="login.html">Logout</a>
+              </div>
+          </div>
+      </div>
+  </div>
+
+  <!-- Bootstrap core JavaScript-->
+  <script src="../../../assets/startbootstrap-sb-admin-2-gh-pages/vendor/jquery/jquery.min.js"></script>
+  <script src="../../../assets/startbootstrap-sb-admin-2-gh-pages/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+  <!-- Core plugin JavaScript-->
+  <script src="../../../assets/startbootstrap-sb-admin-2-gh-pages/vendor/jquery-easing/jquery.easing.min.js"></script>
+
+  <!-- Custom scripts for all pages-->
+  <script src="../../../assets/startbootstrap-sb-admin-2-gh-pages/js/sb-admin-2.min.js"></script>
+
+  <!-- Page level plugins -->
+  <script src="../../../assets/startbootstrap-sb-admin-2-gh-pages/vendor/chart.js/Chart.min.js"></script>
+
+  <!-- Page level custom scripts -->
+  <script src="../../../assets/startbootstrap-sb-admin-2-gh-pages/js/demo/chart-area-demo.js"></script>
+  <script src="../../../assets/startbootstrap-sb-admin-2-gh-pages/js/demo/chart-pie-demo.js"></script>
   <!-- Bootstrap JavaScript Libraries -->
   <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"
     integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous">

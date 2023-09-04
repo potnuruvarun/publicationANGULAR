@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
-import { HttpClient,HttpHeaders } from '@angular/common/http';
+import { HttpClient,HttpHandler,HttpHeaders, HttpRequest } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
 @Injectable({
@@ -9,19 +9,33 @@ import { Observable } from 'rxjs';
 export class UserservicesService {
 
   constructor(private http: HttpClient) { }
+
+
  
  url="http://localhost:5281/api/Login";
 
 
   getdata():Observable<any> {
-  const httpHeaders = { headers:new HttpHeaders({'Content-Type': 'application/json'}) };
-   return this.http.get("http://localhost:5281/api/Publish/Get",httpHeaders);
+    let token="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6IjEyM0BnbWFpbC5jb20iLCJleHAiOjE2OTM4MjM0NzUsImlzcyI6IlRlc3QuY29tIiwiYXVkIjoiVGVzdC5jb20ifQ.TSVh6Ar4rmwXORZ1ONrYSigABnhpZrcmmYJ8hcvC1po";
+    let head=new HttpHeaders().set("Authorization","bearer "+token);
+   return this.http.get("http://localhost:5281/api/Publish/Get",{headers:head});
   }
 
   Login(input: any)
   {
     return this.http.post("http://localhost:5281/api/Login", input);
   }
+
+  publish(input:any):Observable<any>
+  {
+    return this.http.post("http://localhost:5281/api/Faculty",input);
+  }
+
+
+
+ 
+  
+
 
  
 

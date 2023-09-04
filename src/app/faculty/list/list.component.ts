@@ -40,7 +40,7 @@ export class ListComponent implements OnInit {
   }
 
   public logOut = () => {
-    localStorage.removeItem("jwt");
+    localStorage.removeItem("token");
   }
 
 }

@@ -5,6 +5,7 @@ import { ThemeintigrtaionRoutingModule } from './themeintigrtaion-routing.module
 import { SidebarComponent } from './sidebar/sidebar.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { HeaderComponent } from './header/header.component';
+import { ReactiveFormsModule,FormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -15,7 +16,8 @@ import { HeaderComponent } from './header/header.component';
   ],
   imports: [
     CommonModule,
-    ThemeintigrtaionRoutingModule
+    ThemeintigrtaionRoutingModule,
+    ReactiveFormsModule , FormsModule
   ],
   exports:[
     SidebarComponent,
