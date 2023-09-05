@@ -15,10 +15,18 @@ import { AuthservicesService } from 'src/app/authservices.service';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
+  
 
-  ngOnInit() {
+  ngOnInit(): void {
+    this.startTimer();
+    
 
   }
+
+  ngOnDestroy(): void {
+    this.stopTimer();
+  }
+
   invalidLogin?: boolean;
   constructor(private authservices:AuthservicesService,private http: HttpClient, private toastr: ToastrService, private jwtHelper: JwtHelperService, private fb: FormBuilder, private services: UserservicesService, private route: Router) { }
 
@@ -29,7 +37,8 @@ export class LoginComponent implements OnInit {
 
   email: any = ''
   password: any = ''
-  token: any
+  show:Boolean= false
+
 
   Form = new FormGroup({
     email: new FormControl('', Validators.required),
@@ -83,24 +92,52 @@ export class LoginComponent implements OnInit {
 
   //   });
   // }
-
+  private timer: any;
+  counter:number=10;
 
   OnLogin(input:any)
   {
-    
+
     this.services.Login(input).subscribe(res=>{
       const token = (<any>res).token;
       localStorage.setItem("token", token);
+      let string=JSON.stringify(this.show)
+      localStorage.setItem("check",string);
+      this.show=true;
       this.invalidLogin = false;
       this.toastr.success("Login In Sccessfully");
-      this.authservices.setAuthenticated(true);
+      // this.authservices.setAuthenticated(true);
       this.route.navigate(["/facultypublishlist"])
+      
+      this.counter--
+      console.log(this.counter);
 
     })
 
   }
   public logOut = () => {
     localStorage.removeItem("jwt");
+  }
+
+  
+  private startTimer() {
+    this.timer = setInterval(() => {
+      this.decreaseCounter();
+    }, 1000); 
+  }
+
+  private stopTimer() {
+    clearInterval(this.timer); // Clear the timer to stop decreasing the counter
+  }
+
+
+  decreaseCounter() {
+    this.counter--;
+
+    if (this.counter === 0) {
+      localStorage.removeItem("token")
+      this.route.navigate(['']); // Replace '' with the route you want to navigate to
+    }
   }
 
 

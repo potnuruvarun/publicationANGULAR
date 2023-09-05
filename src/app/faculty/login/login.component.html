@@ -11,6 +11,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
 
+
 </head>
 
 <body>
@@ -22,33 +23,33 @@
             <label>
                 Email
             </label>
-            <input class="form-control" formControlName="email" type="text" required  [(ngModel)]="email" required>
-          
+            <input class="form-control"   name="email" formControlName="email" type="text" required  [(ngModel)]="email" required >
+            <span></span>
 
-            <div *ngIf="email.invalid && (email.dirty || email.touched)" class="alert">
-
-                <div *ngIf="email.errors?.['required']">
-                    Name is required.
-                </div>
-                <div *ngIf="email.errors?.['minlength']">
+            <div *ngIf="Form.controls['email'].invalid &&(Form.controls['email'].dirty||Form.controls['email'].touched)" class="alert">Enter your Name
+                <div *ngIf="Form.errors?.['minlength']">
                     Name must be at least 4 characters long.
-                </div>
-                <div *ngIf="email.errors?.['forbiddenName']">
-                    Name cannot be Bob.
-                </div>
-
+                  </div>
             </div>
-
-
-
-
-
             <label>
                 password
             </label>
-            <input class="form-control" formControlName="password" type="password" name="password" [(ngModel)]="password" required>
+            <input class="form-control" formControlName="password" type="password" name="password" [(ngModel)]="password" required ngModel="password">
+            
+            <div *ngIf="Form.controls['password'].invalid &&(Form.controls['email'].dirty||Form.controls['password'].touched)" class="alert">Enter your password
+                <div *ngIf="Form.errors?.['minlength']">
+                    Name must be at least 4 characters long.
+                  </div>
+            </div>
+           
 
-            <button class="btn btn-success ">Submit</button>
+            <!-- [disabled]="!Form.valid" -->
+            <button class="btn btn-success" #data >Submit</button>
+            <div *ngIf="data.value!=''" class="alert">Enter your Password
+                
+            </div>
+
+        
         </form>
 
     </main>

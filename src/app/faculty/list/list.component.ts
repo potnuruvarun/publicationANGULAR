@@ -18,29 +18,30 @@ export class ListComponent implements OnInit {
 
 
   newdata:any;
+  checking=localStorage.getItem("check");
 
   getdata(){
+    // if(this.checking==false)
+    // {
+    //   console.log("fbhryfgryfgry")
+    //   alert ('please log in')
+    // }
     this.services.getdata().subscribe(res=>{
+      console.log(res.value)
+     
     this.newdata=res;
-  
       console.log(res);
       console.log(this.newdata);
     });
 
   }
 
-  isUserAuthenticated() {
-    const token = localStorage.getItem("jwt");
-    if (token && !this.jwtHelper.isTokenExpired(token)) {
-      return true;
-    }
-    else {
-      return false;
-    }
-  }
+  
 
   public logOut = () => {
     localStorage.removeItem("token");
   }
+
+  
 
 }

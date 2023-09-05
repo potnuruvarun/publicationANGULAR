@@ -6,13 +6,17 @@ import { SidebarComponent } from './sidebar/sidebar.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { HeaderComponent } from './header/header.component';
 import { ReactiveFormsModule,FormsModule } from '@angular/forms';
+import { DashboardComponent } from './dashboard/dashboard.component';
+import { RecentsearchsComponent } from './recentsearchs/recentsearchs.component';
 
 
 @NgModule({
   declarations: [
     SidebarComponent,
     NavbarComponent,
-    HeaderComponent
+    HeaderComponent,
+    DashboardComponent,
+    RecentsearchsComponent
   ],
   imports: [
     CommonModule,
@@ -22,7 +26,9 @@ import { ReactiveFormsModule,FormsModule } from '@angular/forms';
   exports:[
     SidebarComponent,
     NavbarComponent,
-    HeaderComponent
+    HeaderComponent,
+    DashboardComponent,
+    RecentsearchsComponent
   ]
 })
 export class ThemeintigrtaionModule { }

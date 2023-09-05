@@ -13,6 +13,7 @@ import { AuthGuard } from '@auth0/auth0-angular';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { TokenType } from '@angular/compiler';
 import { TokeninterceptorService } from './sevices/tokeninterceptor.service';
+import { AuthservicesService } from './authservices.service';
 
 
 export function tokenGetter() {
@@ -43,7 +44,7 @@ export function tokenGetter() {
     ToastrModule.forRoot()
     
   ],
-  providers: [{provide:HTTP_INTERCEPTORS,useClass:TokeninterceptorService,multi:true}],
+  providers: [{provide:HTTP_INTERCEPTORS,useClass:TokeninterceptorService,multi:true},AuthservicesService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
