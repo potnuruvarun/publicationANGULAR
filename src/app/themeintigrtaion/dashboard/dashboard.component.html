@@ -38,12 +38,22 @@
 
 
       <div id="content-wrapper" class="d-flex flex-column">
+        <!-- <app-header (newItemEvent)="addItem($event)",(newevent)="searchitems($event)"></app-header> -->
         <app-header (newItemEvent)="addItem($event)"></app-header>
         <div class="card">
             <ul>
                 <div *ngFor="let item of items">{{item}}</div>
               </ul>
         </div>
+        <div class="card">
+            <ul>
+                <div *ngFor="let m of searchitem">
+                     {{m.publicationdetail}} 
+                     {{m.publishername}}
+                     {{m.publisherType}}
+                 </div>
+              </ul> 
+         </div> 
         <div class="container-fluid">
             <div class="card border-left-primary py-2 text-center" style="color:red;">
                 Expiry With In:-{{counter}}

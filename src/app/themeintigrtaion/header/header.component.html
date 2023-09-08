@@ -14,9 +14,15 @@
             <input type="text" class="form-control bg-light border-0 small" placeholder="Search for..."
                 aria-label="Search" aria-describedby="basic-addon2" #data name="search" [(ngModel)]="search" #newItem>
             <div class="input-group-append">
-                <button class="btn btn-primary" type="button" (click)="onsearch(newItem.value)">
+                <!-- <button class="btn btn-primary" type="button" (click)="onsearch(newItem.value)"> -->
+                    <button class="btn btn-primary" type="button" (click)="onsearch(newItem.value)">
                     <i class="fas fa-search fa-sm"></i>
                 </button>
+
+                <button class="btn btn-primary" style="margin: 20px;" (click)="searchdata(newItem.value)"  >
+                    search
+                </button>
+                
             </div>
         </div>
     </form>

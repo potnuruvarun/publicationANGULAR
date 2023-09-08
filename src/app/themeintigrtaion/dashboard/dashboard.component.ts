@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { PublicationservicesService } from 'src/app/publicationservices.service';
 
 
 @Component({
@@ -10,11 +11,20 @@ import { Router } from '@angular/router';
 export class DashboardComponent implements OnInit {
   private timer: any;
   counter: number = 1200;
+  items = [''];
+  searchitem:any;
 
-
-  constructor(private route: Router) { }
+  constructor(private services:PublicationservicesService,private route: Router) { 
+   
+  }
   ngOnInit(): void {
     this.startTimer();
+    this.services.getSearchData().subscribe(res=>{
+      this.searchitem=res;
+      console.log(this.searchitem)
+
+    });
+  
   }
 
   ngOnDestroy(): void {
@@ -41,11 +51,17 @@ export class DashboardComponent implements OnInit {
     }
   }
 
-  items = [''];
+
 
   addItem(newItem: string) {
     this.items.push(newItem);
+    
   }
+
+  // searchitems(searchdataa:any){
+  //   this.searchitem=searchdataa;
+  //   console.log(this.searchitem)
+  // }
 
 
 

@@ -16,9 +16,9 @@ export class UserservicesService {
 
 
   getdata():Observable<any> {
-    let token="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6IjEyM0BnbWFpbC5jb20iLCJleHAiOjE2OTM4MjM0NzUsImlzcyI6IlRlc3QuY29tIiwiYXVkIjoiVGVzdC5jb20ifQ.TSVh6Ar4rmwXORZ1ONrYSigABnhpZrcmmYJ8hcvC1po";
-    let head=new HttpHeaders().set("Authorization","bearer "+token);
-   return this.http.get("http://localhost:5281/api/Publish/Get",{headers:head});
+    // let token="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6IjEyM0BnbWFpbC5jb20iLCJleHAiOjE2OTM4MjM0NzUsImlzcyI6IlRlc3QuY29tIiwiYXVkIjoiVGVzdC5jb20ifQ.TSVh6Ar4rmwXORZ1ONrYSigABnhpZrcmmYJ8hcvC1po";
+    // let head=new HttpHeaders().set("Authorization","bearer "+token);
+   return this.http.get("http://localhost:5281/api/Publish/Get");
   }
 
   Login(input: any)
@@ -29,6 +29,26 @@ export class UserservicesService {
   publish(input:any):Observable<any>
   {
     return this.http.post("http://localhost:5281/api/Faculty",input);
+  }
+
+  getstudentsdata()
+  {
+    return this.http.get("http://localhost:5281/api/Publish/Studentdata");
+  }
+
+  getstudentbyid(id:any):Observable<any>
+  {
+    return this.http.get("http://localhost:5281/api/Publish/"+id);
+  }
+
+  delete(id:any)
+  {
+    return this.http.delete("http://localhost:5281/api/Publish/"+id)
+  }
+
+  getbyname(input:any):Observable<any>
+  {
+    return this.http.get("http://localhost:5281/api/Faculty/"+input);
   }
 
 

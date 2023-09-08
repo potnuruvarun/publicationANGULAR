@@ -13,7 +13,7 @@ import { AuthGuard } from '@auth0/auth0-angular';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { TokenType } from '@angular/compiler';
 import { TokeninterceptorService } from './sevices/tokeninterceptor.service';
-import { AuthservicesService } from './authservices.service';
+import { AuthservicesService } from './authguardservices/authservices.service';
 
 
 export function tokenGetter() {

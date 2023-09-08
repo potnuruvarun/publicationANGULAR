@@ -8,6 +8,7 @@ import { HeaderComponent } from './header/header.component';
 import { ReactiveFormsModule,FormsModule } from '@angular/forms';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { RecentsearchsComponent } from './recentsearchs/recentsearchs.component';
+import { SearchdataComponent } from './searchdata/searchdata.component';
 
 
 @NgModule({
@@ -16,7 +17,9 @@ import { RecentsearchsComponent } from './recentsearchs/recentsearchs.component'
     NavbarComponent,
     HeaderComponent,
     DashboardComponent,
-    RecentsearchsComponent
+    RecentsearchsComponent,
+    SearchdataComponent,
+    
   ],
   imports: [
     CommonModule,
@@ -28,7 +31,8 @@ import { RecentsearchsComponent } from './recentsearchs/recentsearchs.component'
     NavbarComponent,
     HeaderComponent,
     DashboardComponent,
-    RecentsearchsComponent
+    RecentsearchsComponent,
+    SearchdataComponent
   ]
 })
 export class ThemeintigrtaionModule { }

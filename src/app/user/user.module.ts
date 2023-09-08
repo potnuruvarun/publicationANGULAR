@@ -5,6 +5,7 @@ import { LoginComponent } from './login/login.component';
 import { ListComponent } from './list/list.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { StudentloginComponent } from './studentlogin/studentlogin.component';
+import { ThemeintigrtaionModule } from '../themeintigrtaion/themeintigrtaion.module';
 
 @NgModule({
   declarations: [
@@ -17,6 +18,7 @@ import { StudentloginComponent } from './studentlogin/studentlogin.component';
     UserRoutingModule,
     FormsModule,
     ReactiveFormsModule,
+    ThemeintigrtaionModule
   ],
   exports:[
     LoginComponent,

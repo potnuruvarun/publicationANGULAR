@@ -7,7 +7,7 @@ import { ToastrService } from 'ngx-toastr';
 // import configurl from '../../../assets/config/config.json';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 // import { AuthGuard } from 'src/app/shared/authguard.guard';
-import { AuthservicesService } from 'src/app/authservices.service';
+import { AuthservicesService } from 'src/app/authguardservices/authservices.service';
 
 @Component({
   selector: 'app-login',
