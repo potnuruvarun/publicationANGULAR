@@ -14,6 +14,12 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { TokenType } from '@angular/compiler';
 import { TokeninterceptorService } from './sevices/tokeninterceptor.service';
 import { AuthservicesService } from './authguardservices/authservices.service';
+import { GoogleLoginProvider, 
+  SocialAuthServiceConfig,
+  GoogleSigninButtonDirective,
+
+  SocialLoginModule,GoogleSigninButtonModule  } from '@abacritt/angularx-social-login';
+
 
 
 export function tokenGetter() {
@@ -23,9 +29,12 @@ export function tokenGetter() {
 @NgModule({
   declarations: [
     AppComponent,
+ 
+    
     
   ],
   imports: [
+    SocialLoginModule,
     BrowserAnimationsModule,
     BrowserModule,
     AppRoutingModule,
@@ -33,6 +42,8 @@ export function tokenGetter() {
     UserModule,
     HttpClientModule,
     ThemeintigrtaionModule,
+    GoogleSigninButtonModule,
+  
     
     JwtModule.forRoot({
       config: {
@@ -44,7 +55,20 @@ export function tokenGetter() {
     ToastrModule.forRoot()
     
   ],
-  providers: [{provide:HTTP_INTERCEPTORS,useClass:TokeninterceptorService,multi:true},AuthservicesService],
+  providers: [{provide:HTTP_INTERCEPTORS,useClass:TokeninterceptorService,multi:true},AuthservicesService,
+    {
+      provide: 'SocialAuthServiceConfig',
+      useValue: {
+        autoLogin: true,
+        providers: [
+          {
+            id: GoogleLoginProvider.PROVIDER_ID,
+            provider: new GoogleLoginProvider('964897412807-7ng74vpu7tt0qavr83vfgmu9jm8v7k0l.apps.googleusercontent.com'),
+          }
+        ]
+      } 
+    },
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

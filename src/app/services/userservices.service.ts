@@ -48,9 +48,14 @@ export class UserservicesService {
 
   getbyname(input:any):Observable<any>
   {
-    return this.http.get("http://localhost:5281/api/Faculty/"+input);
+    return this.http.get("http://localhost:5281/api/Faculty/searchdata/"+input);
   }
 
+  // upload(input:any):Observable<any>
+  // {
+  //   return  this.http.post('http://localhost:5281/api/Faculty/vdd',input,{responseType:'text'});
+
+  // }
 
 
  

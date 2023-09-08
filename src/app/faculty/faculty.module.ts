@@ -6,12 +6,19 @@ import { LoginComponent } from './login/login.component';
 import { ListComponent } from './list/list.component';
 import { ReactiveFormsModule,FormsModule } from '@angular/forms';
 import { ThemeintigrtaionModule } from '../themeintigrtaion/themeintigrtaion.module';
+import { FileuploadComponent } from './fileupload/fileupload.component';
+import { GoogleSignupComponent } from './google-signup/google-signup.component';
+
 
 
 @NgModule({
   declarations: [
     LoginComponent,
     ListComponent,
+    FileuploadComponent,
+    GoogleSignupComponent,
+   
+  
     
   ],
   imports: [
@@ -20,12 +27,16 @@ import { ThemeintigrtaionModule } from '../themeintigrtaion/themeintigrtaion.mod
     BrowserModule,
     ReactiveFormsModule,
     FormsModule,
-    ThemeintigrtaionModule
+    ThemeintigrtaionModule,
+
   
   ],
   exports:[
 LoginComponent,
-ListComponent
+ListComponent,
+FileuploadComponent,
+GoogleSignupComponent
+
   ]
 })
 export class FacultyModule { }

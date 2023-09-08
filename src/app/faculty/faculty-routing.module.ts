@@ -3,6 +3,7 @@ import { ActivatedRoute, RouterModule, Routes } from '@angular/router';
 import { LoginComponent } from './login/login.component';
 import { ListComponent } from './list/list.component';
 import { authenticationGuard } from '../authguardservices/authentication.guard';
+import { FileuploadComponent } from './fileupload/fileupload.component';
 // import { AuthGuard } from '../shared/authguard.guard';
 
 
@@ -13,6 +14,7 @@ const routes: Routes = [
  
   },
   {   path:"facultypublishlist",component:ListComponent,canActivate:[authenticationGuard]},
+  {path:"upload",component:FileuploadComponent}
 
   // {
   //   path:'', component:LoginComponent

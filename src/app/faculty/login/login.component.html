@@ -20,37 +20,52 @@
     </header>
     <main style="margin: 300px;">
         <form class="form-control" [formGroup]="Form" (ngSubmit)="OnLogin(Form.value)">
+
+
+            <!-- <button type="button" (click)="loginWithGoogle()" class="btn btn-danger">Login with Google</button> -->
+            <div (click)="loginWithGoogle()" class="google_signin">
+                <app-google-signup></app-google-signup>
+            </div>
+          
+            <!-- <asl-google-signin-button type='icon' size='medium'></asl-google-signin-button> -->
+
             <label>
                 Email
             </label>
-            <input class="form-control"   name="email" formControlName="email" type="text" required  [(ngModel)]="email" required >
+            <input class="form-control" name="email" formControlName="email" type="text" required [(ngModel)]="email"
+                required>
             <span></span>
 
-            <div *ngIf="Form.controls['email'].invalid &&(Form.controls['email'].dirty||Form.controls['email'].touched)" class="alert">Enter your Name
+            <div *ngIf="Form.controls['email'].invalid &&(Form.controls['email'].dirty||Form.controls['email'].touched)"
+                class="alert">Enter your Name
                 <div *ngIf="Form.errors?.['minlength']">
                     Name must be at least 4 characters long.
-                  </div>
+                </div>
             </div>
             <label>
                 password
             </label>
-            <input class="form-control" formControlName="password" type="password" name="password" [(ngModel)]="password" required ngModel="password">
-            
-            <div *ngIf="Form.controls['password'].invalid &&(Form.controls['email'].dirty||Form.controls['password'].touched)" class="alert">Enter your password
+            <input class="form-control" formControlName="password" type="password" name="password"
+                [(ngModel)]="password" required ngModel="password">
+
+            <div *ngIf="Form.controls['password'].invalid &&(Form.controls['email'].dirty||Form.controls['password'].touched)"
+                class="alert">Enter your password
                 <div *ngIf="Form.errors?.['minlength']">
                     Name must be at least 4 characters long.
-                  </div>
+                </div>
             </div>
-           
+
 
             <!-- [disabled]="!Form.valid" -->
-            <button class="btn btn-success" #data >Submit</button>
+            <button class="btn btn-success" #data>Submit</button>
             <div *ngIf="data.value!=''" class="alert">Enter your Password
-                
+
             </div>
 
-        
+
+
         </form>
+
 
     </main>
     <footer>
@@ -64,6 +79,8 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.min.js"
         integrity="sha384-7VPbUDkoPSGFnVtYi0QogXtr74QeVeeIs99Qfg5YCF+TidwNdjvaKZX19NZ/e6oz" crossorigin="anonymous">
         </script>
+
+        
 </body>
 
 </html>
